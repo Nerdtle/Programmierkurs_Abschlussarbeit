@@ -9,3 +9,4 @@ class Gerade:
     def __init__(self, x0, vector1):
         self._x0 = x0
         self._vector1 = vector1
+
