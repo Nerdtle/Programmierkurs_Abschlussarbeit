@@ -33,8 +33,8 @@ class Ebene:
 
         else:
             raise TypeError("x0, vector1, and vector2 need to be lists! x0 was of type '" +
-            "{}', vector1 was of type '{}', ".format(type(x0), type(vector1)) +
-            "and vector2 was of type '{}'.".format(type(vector2)))
+            "{}', vector1 was of type '{}', ".format(type(x0).__name__, type(vector1).__name__) +
+            "and vector2 was of type '{}'.".format(type(vector2).__name__))
 
 class Gerade:
     def __init__(self, x0, vector1):
@@ -48,4 +48,7 @@ class Gerade:
 
         else:
             raise TypeError("x0 and vector1 need to be lists! x0 was of type '"
-            + "{}' and vector1 was of type '{}'.".format(type(x0), type(vector1)))
+            + "{}' and vector1 was of type '{}'.".format(type(x0).__name__, type(vector1).__name__))
+
+testEbene = Ebene([1, 2, 3], [1, 2, 3], [1, 2, 3])
+testGerade = Gerade([1, 2, 3], [1, 2, 3])
