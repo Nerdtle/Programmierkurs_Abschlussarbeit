@@ -37,9 +37,9 @@ class Ebene:
             "and vector2 was of type '{}'.".format(type(vector2).__name__))
 
     def __str__(self):
-        return ("    {} + {} * s + {} * t".format(self._x0[0], self._vector1[0], self._vector2[0]) + 
-                  "E = {} + {} * s + {} * t".format(self._x0[1], self._vector1[1], self._vector2[1]) +
-                  "    {} + {} * s + {} * t".format(self._x0[2], self._vector1[2], self._vector2[2]))
+        return ("    {} + {} * s + {} * t\n".format(self._x0[0], self._vector1[0], self._vector2[0]) + 
+                "E = {} + {} * s + {} * t\n".format(self._x0[1], self._vector1[1], self._vector2[1]) +
+                "    {} + {} * s + {} * t\n".format(self._x0[2], self._vector1[2], self._vector2[2]))
 
 
         # result = "["
@@ -66,12 +66,15 @@ class Gerade:
             + "{}' and vector1 was of type '{}'.".format(type(x0).__name__, type(vector1).__name__))
   
     def __str__(self):
-        return ("    {} + {} * r".format(self._x0[0], self._vector1[0]) + 
-                "G = {} + {} * r".format(self._x0[1], self._vector1[1]) +
-                "    {} + {} * r".format(self._x0[2], self._vector1[2]))
+        return ("    {} + {} * r\n".format(self._x0[0], self._vector1[0]) + 
+                "G = {} + {} * r\n".format(self._x0[1], self._vector1[1]) +
+                "    {} + {} * r\n".format(self._x0[2], self._vector1[2]))
 
     def __repr__(self):
         return "Gerade({}, {})".format(self._x0, self._vector1)
 
-testEbene = Ebene([1, 2, 3], [1, 2, 3], [1, 2, 3])
+testEbene = Ebene([1, 6662, 3], [1, 2, 3], [1, 2, 3])
 testGerade = Gerade([1, 2, 3], [1, 2, 3])
+
+print(testEbene)
+print(testGerade)
