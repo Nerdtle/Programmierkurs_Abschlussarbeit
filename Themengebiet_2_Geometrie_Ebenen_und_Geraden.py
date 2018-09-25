@@ -37,9 +37,60 @@ class Ebene:
             "and vector2 was of type '{}'.".format(type(vector2).__name__))
 
     def __str__(self):
-        return ("    {} + {} * s + {} * t\n".format(self._x0[0], self._vector1[0], self._vector2[0]) + 
-                "E = {} + {} * s + {} * t\n".format(self._x0[1], self._vector1[1], self._vector2[1]) +
-                "    {} + {} * s + {} * t\n".format(self._x0[2], self._vector1[2], self._vector2[2]))
+        #Easy access for the length of the entries in x0
+        lengthOfX00 = len(str(self._x0[0]))
+        lengthOfX01 = len(str(self._x0[1]))
+        lengthOfX02 = len(str(self._x0[2]))
+        
+        #Easy access for the length of the entries in vector1
+        lengthOfV10 = len(str(self._vector1[0])) - (1 if self._vector1[0]<0 else 0)
+        lengthOfV11 = len(str(self._vector1[1])) - (1 if self._vector1[1]<0 else 0)
+        lengthOfV12 = len(str(self._vector1[2])) - (1 if self._vector1[2]<0 else 0)
+
+        #Easy access for the length of the entries in vector2
+        lengthOfV20 = len(str(self._vector2[0])) - (1 if self._vector2[0]<0 else 0)
+        lengthOfV21 = len(str(self._vector2[1])) - (1 if self._vector2[1]<0 else 0)
+        lengthOfV22 = len(str(self._vector2[2])) - (1 if self._vector2[2]<0 else 0)
+
+
+        #Calculating the amount of spaces needed in front of the three entries of x0
+        mostDigitsX0 = lengthOfX00 if (lengthOfX00>lengthOfX01) else (lengthOfX01 if (lengthOfX01>lengthOfX02) else lengthOfX02)
+        
+        spacesX00 = mostDigitsX0 - lengthOfX00
+        spacesX01 = mostDigitsX0 - lengthOfX01
+        spacesX02 = mostDigitsX0 - lengthOfX02
+        
+        spacesX00 = " " * spacesX00
+        spacesX01 = " " * spacesX01
+        spacesX02 = " " * spacesX02
+
+        #Calculating the amount of spaces needed in front of the three entries of vector1
+        mostDigitsV1 =  lengthOfV10 if (lengthOfV10>lengthOfV11) else (lengthOfV11 if (lengthOfV11>lengthOfV12) else lengthOfV12)
+        
+        spacesV10 = mostDigitsV1 - lengthOfV10
+        spacesV11 = mostDigitsV1 - lengthOfV11
+        spacesV12 = mostDigitsV1 - lengthOfV12
+
+        spacesV10 = " " * spacesV10
+        spacesV11 = " " * spacesV11
+        spacesV12 = " " * spacesV12
+
+        #Calculating the amount of spaces needed in front of the three entries of vector1
+        mostDigitsV2 =  lengthOfV20 if (lengthOfV20>lengthOfV21) else (lengthOfV21 if (lengthOfV21>lengthOfV22) else lengthOfV22)
+        
+        spacesV20 = mostDigitsV2 - lengthOfV20
+        spacesV21 = mostDigitsV2 - lengthOfV21
+        spacesV22 = mostDigitsV2 - lengthOfV22
+
+        spacesV20 = " " * spacesV20
+        spacesV21 = " " * spacesV21
+        spacesV22 = " " * spacesV22
+
+        return ("    {}{} {} {}{} * s {} {}{} * t\n".format(spacesX00, self._x0[0], "+" if (self._vector1[0]>=0) else "-", spacesV10, self._vector1[0] if self._vector1[0]>=0 else -self._vector1[0], "+" if (self._vector2[0]>=0) else "-", spacesV20, self._vector2[0] if self._vector2[0]>=0 else -self._vector2[0]) + 
+
+                "E = {}{} {} {}{} * s {} {}{} * t\n".format(spacesX01, self._x0[1], "+" if (self._vector1[1]>=0) else "-", spacesV11, self._vector1[1] if self._vector1[1]>=0 else -self._vector1[1], "+" if (self._vector2[1]>=0) else "-", spacesV21, self._vector2[1] if self._vector2[1]>=0 else -self._vector2[1]) +
+                
+                "    {}{} {} {}{} * s {} {}{} * t\n".format(spacesX02, self._x0[2], "+" if (self._vector1[2]>=0) else "-", spacesV12, self._vector1[2] if self._vector1[2]>=0 else -self._vector1[2], "+" if (self._vector2[2]>=0) else "-", spacesV22, self._vector2[2] if self._vector2[2]>=0 else -self._vector2[2]))
 
 
         # result = "["
@@ -66,15 +117,54 @@ class Gerade:
             + "{}' and vector1 was of type '{}'.".format(type(x0).__name__, type(vector1).__name__))
   
     def __str__(self):
-        return ("    {} + {} * r\n".format(self._x0[0], self._vector1[0]) + 
-                "G = {} + {} * r\n".format(self._x0[1], self._vector1[1]) +
-                "    {} + {} * r\n".format(self._x0[2], self._vector1[2]))
+        #Easy access for the length of the entries in x0
+        lengthOfX00 = len(str(self._x0[0]))
+        lengthOfX01 = len(str(self._x0[1]))
+        lengthOfX02 = len(str(self._x0[2]))
+
+        #Easy access for the length of the entries in vector1
+        lengthOfV10 = len(str(self._vector1[0])) - (1 if self._vector1[0]<0 else 0)
+        lengthOfV11 = len(str(self._vector1[1])) - (1 if self._vector1[1]<0 else 0)
+        lengthOfV12 = len(str(self._vector1[2])) - (1 if self._vector1[2]<0 else 0)
+
+
+        #Calculating the amount of spaces needed in front of the three entries of x0
+        mostDigitsX0 = lengthOfX00 if (lengthOfX00>lengthOfX01) else (lengthOfX01 if (lengthOfX01>lengthOfX02) else lengthOfX02)
+        
+        spacesX00 = mostDigitsX0 - lengthOfX00
+        spacesX01 = mostDigitsX0 - lengthOfX01
+        spacesX02 = mostDigitsX0 - lengthOfX02
+        
+        spacesX00 = " " * spacesX00
+        spacesX01 = " " * spacesX01
+        spacesX02 = " " * spacesX02
+
+
+        #Calculating the amount of spaces needed in front of the three entries of vector1
+        mostDigitsV1 =  lengthOfV10 if (lengthOfV10>lengthOfV11) else (lengthOfV11 if (lengthOfV11>lengthOfV12) else lengthOfV12)
+        
+        spacesV10 = mostDigitsV1 - lengthOfV10
+        spacesV11 = mostDigitsV1 - lengthOfV11
+        spacesV12 = mostDigitsV1 - lengthOfV12
+
+        spacesV10 = " " * spacesV10
+        spacesV11 = " " * spacesV11
+        spacesV12 = " " * spacesV12
+
+        return ("    {}{} {} {}{} * r\n".format(spacesX00, self._x0[0], "+" if (self._vector1[0]>=0)
+                else "-", spacesV10, self._vector1[0] if self._vector1[0]>=0 else -self._vector1[0]) + 
+
+                "G = {}{} {} {}{} * r\n".format(spacesX01, self._x0[1], "+" if (self._vector1[1]>=0)
+                else "-", spacesV11, self._vector1[1] if self._vector1[1]>=0 else -self._vector1[1]) +
+                
+                "    {}{} {} {}{} * r\n".format(spacesX02, self._x0[2], "+" if (self._vector1[2]>=0)
+                else "-", spacesV12, self._vector1[2] if self._vector1[2]>=0 else -self._vector1[2]))
 
     def __repr__(self):
         return "Gerade({}, {})".format(self._x0, self._vector1)
 
-testEbene = Ebene([1, 6662, 3], [1, 2, 3], [1, 2, 3])
-testGerade = Gerade([1, 2, 3], [1, 2, 3])
+testEbene = Ebene([1, -6662, 3], [10000000000000, -2.3, 3], [-1, 0, 3])
+testGerade = Gerade([-200, 662, 3], [-991, 2, 33])
 
 print(testEbene)
 print(testGerade)
