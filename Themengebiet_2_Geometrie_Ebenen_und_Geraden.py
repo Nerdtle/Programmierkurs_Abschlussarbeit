@@ -17,7 +17,7 @@
 #Jetzt schreibe man für die Klassen EbeneHess und Ebene Methoden, die die Darstellung in das jeweils
 #andere Format überführen, also die gleiche Ebene im jeweils anderen Format zurück liefern.
 
-
+#testaenderung von Tom
 
 class Ebene:
     def __init__(self, x0, vector1, vector2):
